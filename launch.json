@@ -1,0 +1,28 @@
+{
+  "kind": "univ4_hook",
+  "hook": {
+    "contract": "MedallionHook",
+    "constructorArgs": [
+      "0xE03A1074c86CFeDd5C142C4F04F1a1536e203543"
+    ],
+    "permissions": [
+      "beforeSwap",
+      "afterSwap",
+      "beforeSwapReturnDelta",
+      "afterSwapReturnDelta"
+    ]
+  },
+  "token": {
+    "contract": "FareToken",
+    "name": "Fare for Medallion 447",
+    "symbol": "FARE447",
+    "decimals": 18
+  },
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336000"
+  },
+  "notes": "The petition is fiction; the contract is not. CREATOR 0x70c6C4fcaAb11151FCEDb32eaaC3431547193A0a is the requester's wallet and the petition's consenting owner. MedallionHook keeps 2% of each trade's ETH side as PoolManager claims. The first 1.64 ETH is reserved for CREATOR and cannot be paid except by the permissionless retire() transaction that verifies NFT #447 is at 0x000000000000000000000000000000000000dEaD. The current NFT holder must first approve this hook; missing approval reverts the entire retirement. The entitlement is capped even if a trade crosses it. Every fee beyond the cap funds IMD purchases to that same dead address; creatorPaid is zero or exactly the cap. No owner, admin, setter, pause, proxy, sweep or caller reward exists. The constructor takes only the literal Sepolia PoolManager above; permissions are exactly 0x00CC and are validated at construction, with no beforeInitialize. NFT 0x9C8fF314C9Bc7F6e59A9d9225Fb22946427eDC03, IMD 0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7 and POOL4 hook 0xc6C965Bd164c483e87d0B550671798e9A3602840 are immutable mainnet addresses. On Sepolia retire() reverts MedallionUnavailable and plain burnIMD() reverts on the absent burn pool after cooldown/budget checks; viaPool4 reverts Pool4Unavailable. Keep these constants. Tests use vm.etch mocks and a real local v4 PoolManager, without RPC. Burns select only the fixed ETH/IMD POOL4 pool (10000,60,POOL4_HOOK) or plain pool (10000,200,zero hook). Batches are automatic: up to 0.05 ETH normally, 0.01 ETH in fallback, minimum 0.002 ETH, five-block cooldown from deployment. Normal mode requires a successful burn within 50400 blocks and valid open-market POOL4 views; the first burn therefore uses plain fallback. The anchor is seeded from a valid POOL4 tick at construction, otherwise zero, and fallback/pokeAnchor walks toward plain spot by at most 200 ticks per elapsed block. Only adverse price deviations are rejected; output must satisfy both a rounded-up 96% reference quote and callerMinOut. All burn inputs must fill. This bounded spot anchor is not a TWAP. Pool parameters here describe the FARE447 launch pool, not the two IMD burn pools. The initial sqrtPriceX96 assumes 1 ETH = 1,000,000 FARE447; it is a deployment assumption, not a valuation. The static pool fee is separate from the hook fee. Deployment requires a CREATE2 address with low 14 bits 0x00CC. Retargeting to mainnet changes only the literal manager argument and mined address, subject to a separate release review. No transactions are broadcast by this deliverable. Build/dependency pins, retirement approval, keeper responsibilities and validation limits are documented in README.md and docs/."
+}

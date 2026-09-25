@@ -1,0 +1,25 @@
+[
+  {
+    "source": "https://registry.npmjs.org/@uniswap/v4-core/-/v4-core-1.0.2.tgz",
+    "archive_sha256": "f3db3af55f3d0c52f16abe96e7db12443f243bca1f334962373f95c57611de49",
+    "destination": "lib/v4-core",
+    "files": 49,
+    "selection": "src excluding src/test; licenses; package.json (unmodified source files)"
+  },
+  {
+    "source": "https://codeload.github.com/foundry-rs/forge-std/tar.gz/refs/tags/v1.9.6",
+    "archive_sha256": "53d2b498183cb7dc62cf726cc6c1a222ad728b0d87976a877ca1f3ed3707b1c6",
+    "destination": "lib/forge-std",
+    "files": 26
+  },
+  {
+    "source": "https://raw.githubusercontent.com/transmissions11/solmate/4b47a19038b798b4a33d9749d25e570443520647/src/auth/Owned.sol",
+    "sha256": "8ac2f2dc41ab8012e93adb3791326ffa1e4059a20c306a777109dd81816b9125",
+    "destination": "lib/solmate/src/auth/Owned.sol"
+  },
+  {
+    "source": "https://raw.githubusercontent.com/transmissions11/solmate/4b47a19038b798b4a33d9749d25e570443520647/LICENSE",
+    "sha256": "20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf",
+    "destination": "lib/solmate/LICENSE"
+  }
+]
